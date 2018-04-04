@@ -22,7 +22,6 @@ one might need to grab existing resource ids to manage.
 * ami
 
 
-
 ```sh
 vpc_lookup
 
