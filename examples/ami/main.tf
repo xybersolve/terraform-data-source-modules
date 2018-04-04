@@ -8,7 +8,7 @@ provider "aws" {
 }
 
 module "ami_find" {
-  source = "../../ami_lookup"
+  source = "../../ami-lookup"
   ami_name = "amzn-ami-hvm-*-x86_64-gp2"
   ami_owner = "amazon"
 }

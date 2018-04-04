@@ -7,7 +7,7 @@ provider "aws" {
 }
 
 module "vpc_data" {
-  source  = "../../vpc_lookup"
+  source  = "../../vpc-lookup"
   vpc_name_tag = "${var.application}-${var.environment}"
   private_subnet_name_tag = "${var.application}-${var.environment}-private-*"
   public_subnet_name_tag = "${var.application}-${var.environment}-public-*"

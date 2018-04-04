@@ -7,6 +7,6 @@ provider "aws" {
 }
 
 module "instance" {
-  source = "../../instance_lookup"
+  source = "../../instance-lookup"
   instance_name_tag = "${var.application}-${var.environment}-web"
 }

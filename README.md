@@ -2,6 +2,11 @@
 
 > Modules to lookup AWS or extant resources
 
+## Notes
+I find these lookup modules particularly useful in brownfield projects, where
+one might need to grab existing resource ids to manage.
+
+
 #### Extant resource lookup modules:
 * vpc_lookup
 * instance_lookup
