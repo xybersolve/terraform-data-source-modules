@@ -22,6 +22,7 @@ Session.vim
 tags
 
 # Terraform
+terraform
 .terraform
 terraform.tfvars
 terraform.tfplan

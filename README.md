@@ -1,6 +1,6 @@
 # terraform_data_source_modules
 
-> Modules to lookup AWS or extant resources
+> Custom Terraform Modules to lookup AWS or extant resources
 
 ## Notes
 I find these lookup modules particularly useful, when one needs to grab existing
@@ -32,7 +32,7 @@ lookup VPC, public & private subnet ids (wildcards ok)
 ```sh
 
 module "vpc_data" {
-  source  = "../../../modules/data_sources/vpc"
+  source = "git::git@github.com:xybersolve/terraform-data-source-modules.git//vpc-lookup"
   vpc_name_tag            = "${var.application}-${var.environment}"
   private_subnet_name_tag = "${var.application}-${var.environment}-private-*"
   public_subnet_name_tag  = "${var.application}-${var.environment}-public-*"
@@ -67,7 +67,7 @@ Lookup Instance, public & private subnet ids (use wildcards)
 ```sh
 # lookup 'bastion' server instance
 module "bastion" {
-  source = "../../../modules/data_sources/instance-lookup"
+  source = "git::git@github.com:xybersolve/terraform-data-source-modules.git//instance-lookup"
   instance_name_tag = "${var.application}-${var.environment}-bastion"
 }
 
@@ -97,18 +97,18 @@ locals {
 # ubuntu_ami & amazon_ami, used together
 
 # get the latest Amazon Linux AMI Id
-module "amazon_ami" {
-  source = "../../../modules/data_sources/amazon_linux_ami"
+module "xenial_ami" {
+  source = "git::git@github.com:xybersolve/terraform-data-source-modules.git//ami-ubuntu-xenial"
 }
 
-# get the latest Ubuntu AMI Id
-module "ubuntu_ami" {
-  source = "../../../modules/data_sources/ubuntu_ami"
+module "amazon_ami" {
+  source = "git::git@github.com:xybersolve/terraform-data-source-modules.git//ami-amazon-linux"
 }
+
 
 # assign each AMI Id to a local variable
 locals {
-  ubuntu_ami_id = "${module.ubuntu_ami.ami_id}"
+  ubuntu_ami_id = "${module.xenial_ami.ami_id}"
   amazon_ami_id = "${module.amazon_ami.ami_id}"
 }
 
